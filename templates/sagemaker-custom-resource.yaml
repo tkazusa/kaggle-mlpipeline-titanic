@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Amazon SageMaker notebook instance.
+
+Resources:
+  sagemakerexecutionpolicy55AACDAF:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      PolicyDocument:
+        Statement:
+          - Action: s3:*
+            Effect: Allow
+            Resource: arn:aws:s3:::*
+        Version: "2012-10-17"
+      Description: ""
+      ManagedPolicyName: AmazonSageMaker-ExecutionPolicy-cfn
+      Path: /
+  
+  sagmakernotebookrole50FC2AB6:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service: sagemaker.amazonaws.com
+        Version: "2012-10-17"
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonSageMakerFullAccess
+        - Ref: sagemakerexecutionpolicy55AACDAF
+      RoleName: sagemaker-notebook-execution-role-cfn
+  
+  sagemakernotebook:
+    Type: AWS::SageMaker::NotebookInstance
+    Properties:
+      InstanceType: ml.t2.medium
+      RoleArn:
+        Fn::GetAtt:
+          - sagmakernotebookrole50FC2AB6
+          - Arn
