@@ -113,6 +113,7 @@ def deriveAccompaniedBy(parents, SibSp):
         親に対する子供の割合 (XXX)
     """
     if(parents > 0): return parents / (SibSp + 1)
+    else: return 0
 
     
 def unaccompaniedChild(age: int, parch: int) -> bool:
@@ -124,9 +125,9 @@ def unaccompaniedChild(age: int, parch: int) -> bool:
         同行者がいない場合 True, いる場合 False (bool)
     """
     if((age < 16) & (parch == 0)):
-        return True
+        return 1
     else:
-        return False
+        return 0
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -168,7 +169,7 @@ if __name__ == '__main__':
     data = data.astype({"Pclass": int, "Age": int, "SibSp": int, "Parch": int})
 
     categorical_names = {}
-    categorical_features = ['Embarked', 'Sex']
+    categorical_features = ['Embarked', 'Sex', 'SibSpGroup1', 'SibSpGroup2', 'SibSpGroup3', 'ParChGT2']
     for feature in categorical_features:
         le = preprocessing.LabelEncoder()
         le.fit(data[feature])
@@ -180,4 +181,10 @@ if __name__ == '__main__':
     data = data.drop(['Pclass'], axis=1)
     data = data.drop(['Name', 'Parch', 'SibSp', 'title', 'Ticket', 'PassengerId'], axis=1)
     
-    data.to_csv(output_data_path, header=True, index=False)
+    if data_type == 'train': 
+        data.to_csv(output_data_path, header=True, index=False)
+    elif data_type == 'test':
+        data.to_csv(output_data_path, header=False, index=False)
+    else:
+        print('Specify data_type fro train or test')
+        

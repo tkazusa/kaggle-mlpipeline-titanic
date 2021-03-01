@@ -1,11 +1,10 @@
 import argparse
-import joblib
 import os
 import pandas as pd
+import joblib
 
 from sklearn.ensemble import RandomForestClassifier
 from sklearn import preprocessing
-from sklearn.externals import joblib
 from sklearn.model_selection import StratifiedKFold, cross_val_score, GridSearchCV
 
 
@@ -24,11 +23,9 @@ if __name__ == '__main__':
     train_path = os.path.join(args.train, 'train.csv')
     train = pd.read_csv(train_path)
         
-    
-    X_train, y_train = train.drop(['Survived', 'data_type'], axis=1), train['Survived']
+    X_train, y_train = train.drop(['Survived'], axis=1), train['Survived']
     y_train = y_train.astype({"Survived": int})
     
-
     rf = RandomForestClassifier(n_estimators=100, n_jobs=-1)
 
     param_grid =  {
