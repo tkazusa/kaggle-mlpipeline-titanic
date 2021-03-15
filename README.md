@@ -2,7 +2,7 @@
 Kaggle の Titanic データセットを活用して、機械学習におけるデータの前処理、学習、推論を自動化するパイプラインを AWS 上に構築します。
 
 ## 実行環境の構築
-サンプルノートブックは Amazon SageMaker の Jupyter 環境であるノートブックインスタンス上で実行することを想定しています。 環境の構築は CloudFormation のテンプレートから行えます。 この リンク から行って下さい。
+サンプルノートブックは Amazon SageMaker の Jupyter 環境であるノートブックインスタンス上で実行することを想定しています。また、Amazon SageMaker ノートブックインスタンス インスタンスと AWS StepFunctions にそれぞれ IAM ロールのやポリシーの準備が必要になります。詳細は[コチラ](https://github.com/aws-samples/amazon-sagemaker-examples-jp/blob/legacy/step-functions-data-science-sdk/machine_learning_workflow_abalone.ipynb)をご参考に下さい。
 
 ## サンプルの構成
 
