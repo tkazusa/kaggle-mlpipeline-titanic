@@ -8,6 +8,7 @@ Kaggle の Titanic データセットを活用して、機械学習における�
 - 東京リージョン以外を活用したい、または、ハンズオン環境の詳細について知りたいという方は、[コチラ](https://github.com/tkazusa/kaggle-mlpipeline-titanic/blob/main/cfn-templates/sagemaker-custom-resource.yaml) の CloudFormation テンプレート をご確認下さい。
 - AWS CDK をご活用になりたいかたは、[コチラ](https://github.com/tkazusa/kaggle-mlpipeline-titanic/tree/main/cdk-app) をご参考に下さい。
 
+ハンズオンでは、[Kaggle](https://www.kaggle.com/) のデータセットを活用します。ダウンロードが可能なようにご自身のアカウントをご準備下さい。
 
 ## サンプルの構成
 
