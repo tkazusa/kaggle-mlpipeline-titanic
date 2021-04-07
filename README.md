@@ -2,7 +2,12 @@
 Kaggle の Titanic データセットを活用して、機械学習におけるデータの前処理、学習、推論を自動化するパイプラインを AWS 上に構築します。
 
 ## 実行環境の構築
-サンプルノートブックは Amazon SageMaker の Jupyter 環境であるノートブックインスタンス上で実行することを想定しています。また、Amazon SageMaker ノートブックインスタンス インスタンスと AWS StepFunctions にそれぞれ IAM ロールのやポリシーの準備が必要になります。詳細は[コチラ](https://github.com/aws-samples/amazon-sagemaker-examples-jp/blob/legacy/step-functions-data-science-sdk/machine_learning_workflow_abalone.ipynb)をご参考に下さい。
+サンプルノートブックは Amazon SageMaker の Jupyter 環境であるノートブックインスタンス上で実行することを想定しています。この場合、Amazon SageMaker ノートブックインスタンス インスタンスと AWS StepFunctions にそれぞれ IAM ロールのやポリシーの準備が必要になります。
+
+- ハンズオン環境は [コチラ](https://ap-northeast-1.console.aws.amazon.com/cloudformation/home?region=ap-northeast-1#/stacks/create/review?templateURL=https://titanic-pipeline-cfn-template.s3-ap-northeast-1.amazonaws.com/sagemaker-custom-resource.yaml&stackName=titanic-ml-pipeline) のリンクから、AWS CloudFormation を活用してご自身のアカウントの東京リージョンに構築できます。「スタックを作成」ボタンを押して下さい。構築には10分程度かかります。
+- 東京リージョン以外を活用したい、または、ハンズオン環境の詳細について知りたいという方は、[コチラ](https://github.com/tkazusa/kaggle-mlpipeline-titanic/blob/main/cfn-templates/sagemaker-custom-resource.yaml) の CloudFormation テンプレート をご確認下さい。
+- AWS CDK をご活用になりたいかたは、[コチラ](https://github.com/tkazusa/kaggle-mlpipeline-titanic/tree/main/cdk-app) をご参考に下さい。
+
 
 ## サンプルの構成
 
